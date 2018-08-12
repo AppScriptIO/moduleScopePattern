@@ -1,0 +1,6 @@
+{
+    "name": "@dependency/moduleScopePattern",
+    "main": "./source/entrypoint.js",
+    "version": "1.0.0"
+  }
+  
