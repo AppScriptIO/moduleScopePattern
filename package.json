@@ -1,6 +1,9 @@
 {
     "name": "@dependency/moduleScopePattern",
     "main": "./source/entrypoint.js",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "dependencies": {
+      "@dependency/recursiveCreateDirectory" : "https://github.com/AppScriptIO/recursiveCreateDirectory"
+    }
   }
   
