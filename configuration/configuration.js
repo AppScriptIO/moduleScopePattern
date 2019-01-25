@@ -2,11 +2,12 @@ const path = require('path')
 const projectPath = "/project";
 const appDeploymentLifecyclePath = path.dirname( require.resolve(`@dependency/appDeploymentLifecycle/package.json`) ) 
 
-module.exports = {
+module.exports = Object.assign(
+{ // own project's configuration
     directory: {
         projectPath,
         application: {
-            hostAbsolutePath: path.resolve(`${__dirname}/../..`),
+            hostAbsolutePath: path.resolve(`${__dirname}/..`),
             containerAbsolutePath: `${projectPath}/application`
         }
     },
@@ -33,4 +34,6 @@ module.exports = {
             }
         ]
     }
-}
+},
+{}
+)
