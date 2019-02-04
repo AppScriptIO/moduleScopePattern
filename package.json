@@ -1,9 +1,15 @@
 {
     "name": "@dependency/moduleScopePattern",
-    "main": "./source/entrypoint.js",
+    "main": "./source/script.js",
     "version": "1.0.0",
     "dependencies": {
       "@dependency/recursiveCreateDirectory" : "https://github.com/AppScriptIO/recursiveCreateDirectory"
+    },
+    "devDependencies": {
+      "@dependency/scriptManager": "https://github.com/AppScriptIO/scriptManager",
+      "@dependency/deploymentScript": "https://github.com/AppScriptIO/deploymentScript",
+      "@dependency/javascriptTranspilation": "https://github.com/AppScriptIO/javascriptTranspilation",
+      "del": "^3.0.0"
     }
   }
   
