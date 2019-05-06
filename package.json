@@ -1,7 +1,7 @@
 {
   "name": "@dependency/moduleScopePattern",
-  "main": "./source/script.js",
   "version": "1.0.0",
+  "main": "./entrypoint/programmaticAPI",
   "dependencies": {
     "@dependency/recursiveCreateDirectory": "https://github.com/AppScriptIO/recursiveCreateDirectory",
     "del": "^3.0.0"
