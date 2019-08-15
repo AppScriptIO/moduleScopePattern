@@ -2,7 +2,7 @@ import path, { join } from 'path'
 import { constants as filesystemConstants, promises as filesystem } from 'fs'
 import { recursiveCreateDirectory } from '@dependency/recursiveCreateDirectory'
 
-async function moduleScopePattern({
+export async function moduleScopePattern({
   rootScopeModulePath, // destination path - full path of the root scope module i.e. <path to node_modules>/<folders to scope module>
   rootFolderArray, // folders to be symlinked to the module scope folder (paths relative to rootPath).
   rootPath, // path to the project root folder where files should be symlinked from.
@@ -24,6 +24,3 @@ async function moduleScopePattern({
   console.groupEnd()
 }
 
-module.exports = {
-  moduleScopePattern,
-}

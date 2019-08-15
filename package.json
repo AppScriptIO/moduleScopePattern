@@ -2,6 +2,9 @@
   "name": "@dependency/moduleScopePattern",
   "version": "1.0.1",
   "main": "./entrypoint/programmaticAPI",
+  "scripts": {
+    "buildAndRelease": "yarn run scriptManager shouldCompileScript=true JSProject/buildAndRelease \".moduleProject({})\""
+  },
   "dependencies": {
     "@dependency/recursiveCreateDirectory": "https://github.com/AppScriptIO/recursiveCreateDirectory#semver:^1.x.x",
     "del": "^3.0.0"
