@@ -1,9 +1,10 @@
 {
-	"name": "@dependency/moduleScopePattern",
+	"name": "@dependency/handleModuleSystem",
 	"version": "1.0.2",
 	"main": "./entrypoint/programmaticAPI",
 	"scripts": {
-		"buildAndRelease": "yarn run scriptManager shouldCompileScript=true JSProject/buildAndRelease \".moduleProject({})\""
+		"build": "yarn run scriptManager shouldCompileScript=true @dependency/deploymentScript \".buildSourceCode.moduleProject({}, {compile:[/**'./test'*/]})\"",
+		"buildAndRelease": "yarn run scriptManager shouldCompileScript=true @dependency/deploymentScript \".buildAndRelease.moduleProject({})\""
 	},
 	"dependencies": {
 		"@dependency/recursiveCreateDirectory": "https://github.com/AppScriptIO/recursiveCreateDirectory#semver:^1.x.x",
