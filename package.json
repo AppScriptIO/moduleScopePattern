@@ -1,6 +1,6 @@
 {
 	"name": "@dependency/handleModuleSystem",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"main": "./entrypoint/programmaticAPI",
 	"scripts": {
 		"build": "yarn run scriptManager shouldCompileScript=true @dependency/deploymentScript \".buildSourceCode.moduleProject({}, {compile:[/**'./test'*/]})\"",
