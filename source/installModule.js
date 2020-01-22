@@ -1,5 +1,5 @@
 import { execSync, spawn, spawnSync } from 'child_process'
-import { constants: filesystemConstants, promises: filesystem } from 'fs'
+import { constants as filesystemConstants, promises as filesystem } from 'fs'
 import path from 'path'
 
 // 📦 Install NodeJS package.json modules, for initializing a project missing node_modules folder.
