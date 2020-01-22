@@ -1,9 +1,8 @@
 // import assert from 'assert'
 import path from 'path'
 import { assert } from 'chai'
-import configuration from '../setup/configuration'
-import { requireNoCache } from './entrypoint.js'
-const testAssetPath = path.join(configuration.directory.application.containerAbsolutePath, 'test/asset')
+import { requireNoCache } from '../source/requireNoCache.js'
+const testAssetPath = path.join(__dirname, 'asset')
 const memoizationModule = path.join(testAssetPath, 'memoizationModule')
 
 describe('function requireNoCache: prevent memoization of required module', function() {

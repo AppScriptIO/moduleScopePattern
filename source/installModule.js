@@ -1,10 +1,10 @@
-const { execSync, spawn, spawnSync } = require('child_process'),
-  { constants: filesystemConstants, promises: filesystem } = require('fs'),
-  path = require('path')
+import { execSync, spawn, spawnSync } from 'child_process'
+import { constants: filesystemConstants, promises: filesystem } from 'fs'
+import path from 'path'
 
 // 📦 Install NodeJS package.json modules, for initializing a project missing node_modules folder.
 // This is not required anymore, as Yarn workspaces fixes the issue of dependency installation for submodules (non-npm packages).
-async function installModule({
+export async function installModule({
   installPath, // path of package.json.
   options = { checkIfInstalled: true },
 }) {
@@ -25,13 +25,8 @@ async function installModule({
 }
 
 // Interface for multiple install locations.
-async function installModuleMultiple({ installPathArray, options = {} }) {
+export async function installModuleMultiple({ installPathArray, options = {} }) {
   for (let installPath of installPathArray) {
     await installModule({ installPath })
   }
-}
-
-module.exports = {
-  installModule,
-  installModuleMultiple,
 }

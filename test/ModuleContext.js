@@ -1,5 +1,5 @@
 import assert from 'assert'
-import ModuleContext from './entrypoint.js'
+import {ModuleContext} from '../source/ModuleContext.js'
 
 const func = function(superclass) {
   return class extends superclass {}

@@ -5,7 +5,7 @@ JSModuleTypeCheck - Check the type of a JS module - e.g. file or directory
  *  Check if javascript module is a module file or directory module.
  * @return String || Boolean
  */
-export function IsFileOrFolderJSModule({
+export function isFileOrFolderJSModule({
   modulePath, // path to js module
   isType = false, // 'file' || 'directory' - allows to return boolean in case set, respective to the type set.
 }) {

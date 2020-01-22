@@ -1,18 +1,18 @@
 {
 	"name": "@dependency/handleModuleSystem",
-	"version": "1.0.2",
+	"version": "2.0.0",
 	"main": "./entrypoint/programmaticAPI",
 	"scripts": {
 		"build": "yarn run scriptManager shouldCompileScript=true @dependency/deploymentScript \".buildSourceCode.moduleProject({}, {compile:[/**'./test'*/]})\"",
 		"buildAndRelease": "yarn run scriptManager shouldCompileScript=true @dependency/deploymentScript \".buildAndRelease.moduleProject({})\""
 	},
 	"dependencies": {
-		"@dependency/recursiveCreateDirectory": "https://github.com/AppScriptIO/recursiveCreateDirectory#semver:^1.x.x",
+		"@dependency/handleFilesystemOperation": "https://github.com/AppScriptIO/handleFilesystemOperation#semver:^2.x.x",
 		"del": "^3.0.0"
 	},
 	"devDependencies": {
 		"del": "^3.0.0",
-		"@dependency/deploymentScript": "https://github.com/AppScriptIO/deploymentScript#semver:^1.x.x",
+		"@dependency/deploymentScript": "https://github.com/AppScriptIO/deploymentScript#semver:^2.x.x",
 		"@dependency/javascriptStaticAnalysis": "https://github.com/AppScriptIO/javascriptStaticAnalysis#semver:^1.x.x",
 		"@dependency/javascriptTranspilation": "https://github.com/AppScriptIO/javascriptTranspilation#semver:^1.x.x",
 		"@dependency/scriptManager": "https://github.com/AppScriptIO/scriptManager#semver:^1.x.x",

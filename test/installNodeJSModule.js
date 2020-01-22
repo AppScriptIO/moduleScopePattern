@@ -3,9 +3,8 @@ import path from 'path'
 import { assert } from 'chai'
 import filesystem from 'fs'
 import deleteModule from 'del'
-import configuration from '../setup/configuration'
-import { installModule, installModuleMultiple } from './entrypoint.js'
-const testAssetPath = path.join(configuration.directory.application.containerAbsolutePath, 'test/asset')
+import { installModule, installModuleMultiple } from '../source/installModule.js'
+const testAssetPath = path.join(__dirname, 'asset')
 const moduleFolder = [
         path.join(testAssetPath, 'module1'),
         path.join(testAssetPath, 'module2'),

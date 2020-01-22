@@ -9,7 +9,7 @@ Creates a Javascript object context that can be cached. Using JS proxy.
 const ModuleContextCachedList = {} // all ModuleContext cached classes
 
 // Interfaces: expose as 'new' keyword or function call.
-export default new Proxy(function() {}, {
+export const ModuleContext = new Proxy(function() {}, {
   /**
    *  Create cache of module context before creating a cache for target.
    */

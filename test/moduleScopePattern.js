@@ -3,9 +3,8 @@ import path from 'path'
 import { assert } from 'chai'
 import filesystem from 'fs'
 import deleteModule from 'del'
-import configuration from '../configuration'
-import { moduleScopePattern } from './entrypoint.js'
-const testAssetPath = path.join(configuration.directory.application.containerAbsolutePath, 'test/asset'),
+import { moduleScopePattern } from '../source/moduleScopePattern.js'
+const testAssetPath = path.join(__dirname, '/asset'),
   moduleFolderName = ['module1', 'module2'],
   temporaryFolderPath = path.join(testAssetPath, 'temporary')
 
