@@ -1,32 +1,33 @@
-import { execSync, spawn, spawnSync } from 'child_process'
-import { constants as filesystemConstants, promises as filesystem } from 'fs'
-import path from 'path'
+"use strict";var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");Object.defineProperty(exports, "__esModule", { value: true });exports.installModule = installModule;exports.installModuleMultiple = installModuleMultiple;var _child_process = require("child_process");
+var _fs = require("fs");
+var _path = _interopRequireDefault(require("path"));
 
-// 📦 Install NodeJS package.json modules, for initializing a project missing node_modules folder.
-// This is not required anymore, as Yarn workspaces fixes the issue of dependency installation for submodules (non-npm packages).
-export async function installModule({
-  installPath, // path of package.json.
-  options = { checkIfInstalled: true },
-}) {
-  // Install nodejs packages before
-  let nodeModulesPath = path.join(installPath, 'node_modules')
-  let nodeModulesExist
+
+
+async function installModule({
+  installPath,
+  options = { checkIfInstalled: true } })
+{
+
+  let nodeModulesPath = _path.default.join(installPath, 'node_modules');
+  let nodeModulesExist;
   if (options.checkIfInstalled)
-    nodeModulesExist = await filesystem
-      .access(nodeModulesPath, filesystemConstants.F_OK) // check if directory exist
-      .then(() => true)
-      .catch(error => false)
+  nodeModulesExist = await _fs.promises.
+  access(nodeModulesPath, _fs.constants.F_OK).
+  then(() => true).
+  catch(error => false);
   if (!nodeModulesExist || !options.checkIfInstalled) {
-    console.log(`\x1b[2m%s\x1b[0m'`, `• yarn install for folder: ${installPath}`)
-    spawnSync('yarn', ['install --pure-lockfile --production=false'], { cwd: installPath, shell: true, stdio: [0, 1, 2] })
+    console.log(`\x1b[2m%s\x1b[0m'`, `• yarn install for folder: ${installPath}`);
+    (0, _child_process.spawnSync)('yarn', ['install --pure-lockfile --production=false'], { cwd: installPath, shell: true, stdio: [0, 1, 2] });
   } else {
-    // skip installation
+
   }
 }
 
-// Interface for multiple install locations.
-export async function installModuleMultiple({ installPathArray, options = {} }) {
+
+async function installModuleMultiple({ installPathArray, options = {} }) {
   for (let installPath of installPathArray) {
-    await installModule({ installPath })
+    await installModule({ installPath });
   }
 }
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NvdXJjZS9pbnN0YWxsTW9kdWxlLmpzIl0sIm5hbWVzIjpbImluc3RhbGxNb2R1bGUiLCJpbnN0YWxsUGF0aCIsIm9wdGlvbnMiLCJjaGVja0lmSW5zdGFsbGVkIiwibm9kZU1vZHVsZXNQYXRoIiwicGF0aCIsImpvaW4iLCJub2RlTW9kdWxlc0V4aXN0IiwiZmlsZXN5c3RlbSIsImFjY2VzcyIsImZpbGVzeXN0ZW1Db25zdGFudHMiLCJGX09LIiwidGhlbiIsImNhdGNoIiwiZXJyb3IiLCJjb25zb2xlIiwibG9nIiwiY3dkIiwic2hlbGwiLCJzdGRpbyIsImluc3RhbGxNb2R1bGVNdWx0aXBsZSIsImluc3RhbGxQYXRoQXJyYXkiXSwibWFwcGluZ3MiOiI0UEFBQTtBQUNBO0FBQ0E7Ozs7QUFJTyxlQUFlQSxhQUFmLENBQTZCO0FBQ2xDQyxFQUFBQSxXQURrQztBQUVsQ0MsRUFBQUEsT0FBTyxHQUFHLEVBQUVDLGdCQUFnQixFQUFFLElBQXBCLEVBRndCLEVBQTdCO0FBR0o7O0FBRUQsTUFBSUMsZUFBZSxHQUFHQyxjQUFLQyxJQUFMLENBQVVMLFdBQVYsRUFBdUIsY0FBdkIsQ0FBdEI7QUFDQSxNQUFJTSxnQkFBSjtBQUNBLE1BQUlMLE9BQU8sQ0FBQ0MsZ0JBQVo7QUFDRUksRUFBQUEsZ0JBQWdCLEdBQUcsTUFBTUM7QUFDdEJDLEVBQUFBLE1BRHNCLENBQ2ZMLGVBRGUsRUFDRU0sY0FBb0JDLElBRHRCO0FBRXRCQyxFQUFBQSxJQUZzQixDQUVqQixNQUFNLElBRlc7QUFHdEJDLEVBQUFBLEtBSHNCLENBR2hCQyxLQUFLLElBQUksS0FITyxDQUF6QjtBQUlGLE1BQUksQ0FBQ1AsZ0JBQUQsSUFBcUIsQ0FBQ0wsT0FBTyxDQUFDQyxnQkFBbEMsRUFBb0Q7QUFDbERZLElBQUFBLE9BQU8sQ0FBQ0MsR0FBUixDQUFhLG1CQUFiLEVBQWtDLDhCQUE2QmYsV0FBWSxFQUEzRTtBQUNBLGtDQUFVLE1BQVYsRUFBa0IsQ0FBQyw0Q0FBRCxDQUFsQixFQUFrRSxFQUFFZ0IsR0FBRyxFQUFFaEIsV0FBUCxFQUFvQmlCLEtBQUssRUFBRSxJQUEzQixFQUFpQ0MsS0FBSyxFQUFFLENBQUMsQ0FBRCxFQUFJLENBQUosRUFBTyxDQUFQLENBQXhDLEVBQWxFO0FBQ0QsR0FIRCxNQUdPOztBQUVOO0FBQ0Y7OztBQUdNLGVBQWVDLHFCQUFmLENBQXFDLEVBQUVDLGdCQUFGLEVBQW9CbkIsT0FBTyxHQUFHLEVBQTlCLEVBQXJDLEVBQXlFO0FBQzlFLE9BQUssSUFBSUQsV0FBVCxJQUF3Qm9CLGdCQUF4QixFQUEwQztBQUN4QyxVQUFNckIsYUFBYSxDQUFDLEVBQUVDLFdBQUYsRUFBRCxDQUFuQjtBQUNEO0FBQ0YiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBleGVjU3luYywgc3Bhd24sIHNwYXduU3luYyB9IGZyb20gJ2NoaWxkX3Byb2Nlc3MnXHJcbmltcG9ydCB7IGNvbnN0YW50cyBhcyBmaWxlc3lzdGVtQ29uc3RhbnRzLCBwcm9taXNlcyBhcyBmaWxlc3lzdGVtIH0gZnJvbSAnZnMnXHJcbmltcG9ydCBwYXRoIGZyb20gJ3BhdGgnXHJcblxyXG4vLyDwn5OmIEluc3RhbGwgTm9kZUpTIHBhY2thZ2UuanNvbiBtb2R1bGVzLCBmb3IgaW5pdGlhbGl6aW5nIGEgcHJvamVjdCBtaXNzaW5nIG5vZGVfbW9kdWxlcyBmb2xkZXIuXHJcbi8vIFRoaXMgaXMgbm90IHJlcXVpcmVkIGFueW1vcmUsIGFzIFlhcm4gd29ya3NwYWNlcyBmaXhlcyB0aGUgaXNzdWUgb2YgZGVwZW5kZW5jeSBpbnN0YWxsYXRpb24gZm9yIHN1Ym1vZHVsZXMgKG5vbi1ucG0gcGFja2FnZXMpLlxyXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gaW5zdGFsbE1vZHVsZSh7XHJcbiAgaW5zdGFsbFBhdGgsIC8vIHBhdGggb2YgcGFja2FnZS5qc29uLlxyXG4gIG9wdGlvbnMgPSB7IGNoZWNrSWZJbnN0YWxsZWQ6IHRydWUgfSxcclxufSkge1xyXG4gIC8vIEluc3RhbGwgbm9kZWpzIHBhY2thZ2VzIGJlZm9yZVxyXG4gIGxldCBub2RlTW9kdWxlc1BhdGggPSBwYXRoLmpvaW4oaW5zdGFsbFBhdGgsICdub2RlX21vZHVsZXMnKVxyXG4gIGxldCBub2RlTW9kdWxlc0V4aXN0XHJcbiAgaWYgKG9wdGlvbnMuY2hlY2tJZkluc3RhbGxlZClcclxuICAgIG5vZGVNb2R1bGVzRXhpc3QgPSBhd2FpdCBmaWxlc3lzdGVtXHJcbiAgICAgIC5hY2Nlc3Mobm9kZU1vZHVsZXNQYXRoLCBmaWxlc3lzdGVtQ29uc3RhbnRzLkZfT0spIC8vIGNoZWNrIGlmIGRpcmVjdG9yeSBleGlzdFxyXG4gICAgICAudGhlbigoKSA9PiB0cnVlKVxyXG4gICAgICAuY2F0Y2goZXJyb3IgPT4gZmFsc2UpXHJcbiAgaWYgKCFub2RlTW9kdWxlc0V4aXN0IHx8ICFvcHRpb25zLmNoZWNrSWZJbnN0YWxsZWQpIHtcclxuICAgIGNvbnNvbGUubG9nKGBcXHgxYlsybSVzXFx4MWJbMG0nYCwgYOKAoiB5YXJuIGluc3RhbGwgZm9yIGZvbGRlcjogJHtpbnN0YWxsUGF0aH1gKVxyXG4gICAgc3Bhd25TeW5jKCd5YXJuJywgWydpbnN0YWxsIC0tcHVyZS1sb2NrZmlsZSAtLXByb2R1Y3Rpb249ZmFsc2UnXSwgeyBjd2Q6IGluc3RhbGxQYXRoLCBzaGVsbDogdHJ1ZSwgc3RkaW86IFswLCAxLCAyXSB9KVxyXG4gIH0gZWxzZSB7XHJcbiAgICAvLyBza2lwIGluc3RhbGxhdGlvblxyXG4gIH1cclxufVxyXG5cclxuLy8gSW50ZXJmYWNlIGZvciBtdWx0aXBsZSBpbnN0YWxsIGxvY2F0aW9ucy5cclxuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGluc3RhbGxNb2R1bGVNdWx0aXBsZSh7IGluc3RhbGxQYXRoQXJyYXksIG9wdGlvbnMgPSB7fSB9KSB7XHJcbiAgZm9yIChsZXQgaW5zdGFsbFBhdGggb2YgaW5zdGFsbFBhdGhBcnJheSkge1xyXG4gICAgYXdhaXQgaW5zdGFsbE1vZHVsZSh7IGluc3RhbGxQYXRoIH0pXHJcbiAgfVxyXG59XHJcbiJdfQ==
