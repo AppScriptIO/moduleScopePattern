@@ -1,1 +1,0 @@
-- Support for adding all directory hierarchy from a path to the OS root, mimicking the require.resolve algorithm that checks all parent folders for `node_modules` folder.
