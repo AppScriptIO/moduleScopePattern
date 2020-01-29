@@ -1,6 +1,6 @@
 export * from './installModule.js'
-export * from './isFileOrFolderJSModule.js'
 export * from './ModuleContext.js'
 export * from './moduleScopePattern.js'
 export * from './requireNoCache.js'
 export * from './addModuleResolutionPath.js'
+export * from './check.js'
