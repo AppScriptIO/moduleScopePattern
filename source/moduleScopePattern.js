@@ -1,27 +1,27 @@
-import path, { join } from 'path'
-import { constants as filesystemConstants, promises as filesystem } from 'fs'
-import { recursiveCreateDirectory } from '@dependency/handleFilesystemOperation'
+"use strict";var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");Object.defineProperty(exports, "__esModule", { value: true });exports.moduleScopePattern = moduleScopePattern;var _path = _interopRequireDefault(require("path"));
+var _fs = require("fs");
+var _handleFilesystemOperation = require("@dependency/handleFilesystemOperation");
 
-// Create symlinks to node_modules module scope. Allowing to load folders through @scope syntax.
-export async function moduleScopePattern({
-  rootScopeModulePath, // destination path - full path of the root scope module i.e. <path to node_modules>/<folders to scope module>
-  rootFolderArray, // folders to be symlinked to the module scope folder (paths relative to rootPath).
-  rootPath, // path to the project root folder where files should be symlinked from.
-} = {}) {
-  console.group(`\x1b[2m\x1b[3m%s`, '• Setup container environment - root scope pattern:')
 
-  rootScopeModulePath = rootScopeModulePath // scope module for top-level directory symlinks
+async function moduleScopePattern({
+  rootScopeModulePath,
+  rootFolderArray,
+  rootPath } =
+{}) {
+  console.group(`\x1b[2m\x1b[3m%s`, '• Setup container environment - root scope pattern:');
 
-  // if directory doesn't exist
-  await filesystem.access(rootScopeModulePath, filesystemConstants.F_OK).catch(error => recursiveCreateDirectory({ directoryPath: rootScopeModulePath }))
+  rootScopeModulePath = rootScopeModulePath;
 
-  // symlink each folder from root path to module scope path.
+
+  await _fs.promises.access(rootScopeModulePath, _fs.constants.F_OK).catch(error => (0, _handleFilesystemOperation.recursiveCreateDirectory)({ directoryPath: rootScopeModulePath }));
+
+
   for (let folderName of rootFolderArray) {
-    let folderSourcePath = path.join(rootPath, folderName)
-    let folderDestinationPath = path.join(rootScopeModulePath, folderName)
-    await filesystem.symlink(folderSourcePath, folderDestinationPath).catch(error => console.log(`Symlink created for ${folderName}`))
+    let folderSourcePath = _path.default.join(rootPath, folderName);
+    let folderDestinationPath = _path.default.join(rootScopeModulePath, folderName);
+    await _fs.promises.symlink(folderSourcePath, folderDestinationPath).catch(error => console.log(`Symlink created for ${folderName}`));
   }
 
-  console.groupEnd()
+  console.groupEnd();
 }
-
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NvdXJjZS9tb2R1bGVTY29wZVBhdHRlcm4uanMiXSwibmFtZXMiOlsibW9kdWxlU2NvcGVQYXR0ZXJuIiwicm9vdFNjb3BlTW9kdWxlUGF0aCIsInJvb3RGb2xkZXJBcnJheSIsInJvb3RQYXRoIiwiY29uc29sZSIsImdyb3VwIiwiZmlsZXN5c3RlbSIsImFjY2VzcyIsImZpbGVzeXN0ZW1Db25zdGFudHMiLCJGX09LIiwiY2F0Y2giLCJlcnJvciIsImRpcmVjdG9yeVBhdGgiLCJmb2xkZXJOYW1lIiwiZm9sZGVyU291cmNlUGF0aCIsInBhdGgiLCJqb2luIiwiZm9sZGVyRGVzdGluYXRpb25QYXRoIiwic3ltbGluayIsImxvZyIsImdyb3VwRW5kIl0sIm1hcHBpbmdzIjoiZ05BQUE7QUFDQTtBQUNBOzs7QUFHTyxlQUFlQSxrQkFBZixDQUFrQztBQUN2Q0MsRUFBQUEsbUJBRHVDO0FBRXZDQyxFQUFBQSxlQUZ1QztBQUd2Q0MsRUFBQUEsUUFIdUM7QUFJckMsRUFKRyxFQUlDO0FBQ05DLEVBQUFBLE9BQU8sQ0FBQ0MsS0FBUixDQUFlLGtCQUFmLEVBQWtDLHFEQUFsQzs7QUFFQUosRUFBQUEsbUJBQW1CLEdBQUdBLG1CQUF0Qjs7O0FBR0EsUUFBTUssYUFBV0MsTUFBWCxDQUFrQk4sbUJBQWxCLEVBQXVDTyxjQUFvQkMsSUFBM0QsRUFBaUVDLEtBQWpFLENBQXVFQyxLQUFLLElBQUkseURBQXlCLEVBQUVDLGFBQWEsRUFBRVgsbUJBQWpCLEVBQXpCLENBQWhGLENBQU47OztBQUdBLE9BQUssSUFBSVksVUFBVCxJQUF1QlgsZUFBdkIsRUFBd0M7QUFDdEMsUUFBSVksZ0JBQWdCLEdBQUdDLGNBQUtDLElBQUwsQ0FBVWIsUUFBVixFQUFvQlUsVUFBcEIsQ0FBdkI7QUFDQSxRQUFJSSxxQkFBcUIsR0FBR0YsY0FBS0MsSUFBTCxDQUFVZixtQkFBVixFQUErQlksVUFBL0IsQ0FBNUI7QUFDQSxVQUFNUCxhQUFXWSxPQUFYLENBQW1CSixnQkFBbkIsRUFBcUNHLHFCQUFyQyxFQUE0RFAsS0FBNUQsQ0FBa0VDLEtBQUssSUFBSVAsT0FBTyxDQUFDZSxHQUFSLENBQWEsdUJBQXNCTixVQUFXLEVBQTlDLENBQTNFLENBQU47QUFDRDs7QUFFRFQsRUFBQUEsT0FBTyxDQUFDZ0IsUUFBUjtBQUNEIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHBhdGgsIHsgam9pbiB9IGZyb20gJ3BhdGgnXG5pbXBvcnQgeyBjb25zdGFudHMgYXMgZmlsZXN5c3RlbUNvbnN0YW50cywgcHJvbWlzZXMgYXMgZmlsZXN5c3RlbSB9IGZyb20gJ2ZzJ1xuaW1wb3J0IHsgcmVjdXJzaXZlQ3JlYXRlRGlyZWN0b3J5IH0gZnJvbSAnQGRlcGVuZGVuY3kvaGFuZGxlRmlsZXN5c3RlbU9wZXJhdGlvbidcblxuLy8gQ3JlYXRlIHN5bWxpbmtzIHRvIG5vZGVfbW9kdWxlcyBtb2R1bGUgc2NvcGUuIEFsbG93aW5nIHRvIGxvYWQgZm9sZGVycyB0aHJvdWdoIEBzY29wZSBzeW50YXguXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gbW9kdWxlU2NvcGVQYXR0ZXJuKHtcbiAgcm9vdFNjb3BlTW9kdWxlUGF0aCwgLy8gZGVzdGluYXRpb24gcGF0aCAtIGZ1bGwgcGF0aCBvZiB0aGUgcm9vdCBzY29wZSBtb2R1bGUgaS5lLiA8cGF0aCB0byBub2RlX21vZHVsZXM+Lzxmb2xkZXJzIHRvIHNjb3BlIG1vZHVsZT5cbiAgcm9vdEZvbGRlckFycmF5LCAvLyBmb2xkZXJzIHRvIGJlIHN5bWxpbmtlZCB0byB0aGUgbW9kdWxlIHNjb3BlIGZvbGRlciAocGF0aHMgcmVsYXRpdmUgdG8gcm9vdFBhdGgpLlxuICByb290UGF0aCwgLy8gcGF0aCB0byB0aGUgcHJvamVjdCByb290IGZvbGRlciB3aGVyZSBmaWxlcyBzaG91bGQgYmUgc3ltbGlua2VkIGZyb20uXG59ID0ge30pIHtcbiAgY29uc29sZS5ncm91cChgXFx4MWJbMm1cXHgxYlszbSVzYCwgJ+KAoiBTZXR1cCBjb250YWluZXIgZW52aXJvbm1lbnQgLSByb290IHNjb3BlIHBhdHRlcm46JylcblxuICByb290U2NvcGVNb2R1bGVQYXRoID0gcm9vdFNjb3BlTW9kdWxlUGF0aCAvLyBzY29wZSBtb2R1bGUgZm9yIHRvcC1sZXZlbCBkaXJlY3Rvcnkgc3ltbGlua3NcblxuICAvLyBpZiBkaXJlY3RvcnkgZG9lc24ndCBleGlzdFxuICBhd2FpdCBmaWxlc3lzdGVtLmFjY2Vzcyhyb290U2NvcGVNb2R1bGVQYXRoLCBmaWxlc3lzdGVtQ29uc3RhbnRzLkZfT0spLmNhdGNoKGVycm9yID0+IHJlY3Vyc2l2ZUNyZWF0ZURpcmVjdG9yeSh7IGRpcmVjdG9yeVBhdGg6IHJvb3RTY29wZU1vZHVsZVBhdGggfSkpXG5cbiAgLy8gc3ltbGluayBlYWNoIGZvbGRlciBmcm9tIHJvb3QgcGF0aCB0byBtb2R1bGUgc2NvcGUgcGF0aC5cbiAgZm9yIChsZXQgZm9sZGVyTmFtZSBvZiByb290Rm9sZGVyQXJyYXkpIHtcbiAgICBsZXQgZm9sZGVyU291cmNlUGF0aCA9IHBhdGguam9pbihyb290UGF0aCwgZm9sZGVyTmFtZSlcbiAgICBsZXQgZm9sZGVyRGVzdGluYXRpb25QYXRoID0gcGF0aC5qb2luKHJvb3RTY29wZU1vZHVsZVBhdGgsIGZvbGRlck5hbWUpXG4gICAgYXdhaXQgZmlsZXN5c3RlbS5zeW1saW5rKGZvbGRlclNvdXJjZVBhdGgsIGZvbGRlckRlc3RpbmF0aW9uUGF0aCkuY2F0Y2goZXJyb3IgPT4gY29uc29sZS5sb2coYFN5bWxpbmsgY3JlYXRlZCBmb3IgJHtmb2xkZXJOYW1lfWApKVxuICB9XG5cbiAgY29uc29sZS5ncm91cEVuZCgpXG59XG5cbiJdfQ==

@@ -1,26 +1,27 @@
-import filesystem from 'fs'
+"use strict";var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");Object.defineProperty(exports, "__esModule", { value: true });exports.isExecutedDirectly = isExecutedDirectly;exports.isFileOrFolderJSModule = isFileOrFolderJSModule;var _fs = _interopRequireDefault(require("fs"));
 
-// check if executed directly from cli or should be invoked as module.
-export function isExecutedDirectly() {
-  return (require.main === module) ? true : false
+
+function isExecutedDirectly() {
+  return require.main === module ? true : false;
 }
 
-/**
-JSModuleTypeCheck - Check the type of a JS module - e.g. file or directory
- *  Check if javascript module is a module file or directory module.
- * @return String || Boolean
- */
-export function isFileOrFolderJSModule({
-  modulePath, // path to js module
-  isType = false, // 'file' || 'directory' - allows to return boolean in case set, respective to the type set.
-}) {
-  let moduleType
-  if (filesystem.existsSync(modulePath) && filesystem.lstatSync(modulePath).isDirectory()) moduleType = 'directory'
-  else if (filesystem.existsSync(`${modulePath}.js`) || (filesystem.existsSync(modulePath) && filesystem.lstatSync(modulePath).isFile())) moduleType = 'file'
-  else throw new Error(`Module ${modulePath} does not exist`)
 
-  // return boolean respective to the type in question.
-  if (isType) return isType === moduleType
 
-  return moduleType
+
+
+
+function isFileOrFolderJSModule({
+  modulePath,
+  isType = false })
+{
+  let moduleType;
+  if (_fs.default.existsSync(modulePath) && _fs.default.lstatSync(modulePath).isDirectory()) moduleType = 'directory';else
+  if (_fs.default.existsSync(`${modulePath}.js`) || _fs.default.existsSync(modulePath) && _fs.default.lstatSync(modulePath).isFile()) moduleType = 'file';else
+  throw new Error(`Module ${modulePath} does not exist`);
+
+
+  if (isType) return isType === moduleType;
+
+  return moduleType;
 }
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NvdXJjZS9jaGVjay5qcyJdLCJuYW1lcyI6WyJpc0V4ZWN1dGVkRGlyZWN0bHkiLCJyZXF1aXJlIiwibWFpbiIsIm1vZHVsZSIsImlzRmlsZU9yRm9sZGVySlNNb2R1bGUiLCJtb2R1bGVQYXRoIiwiaXNUeXBlIiwibW9kdWxlVHlwZSIsImZpbGVzeXN0ZW0iLCJleGlzdHNTeW5jIiwibHN0YXRTeW5jIiwiaXNEaXJlY3RvcnkiLCJpc0ZpbGUiLCJFcnJvciJdLCJtYXBwaW5ncyI6IndRQUFBOzs7QUFHTyxTQUFTQSxrQkFBVCxHQUE4QjtBQUNuQyxTQUFRQyxPQUFPLENBQUNDLElBQVIsS0FBaUJDLE1BQWxCLEdBQTRCLElBQTVCLEdBQW1DLEtBQTFDO0FBQ0Q7Ozs7Ozs7QUFPTSxTQUFTQyxzQkFBVCxDQUFnQztBQUNyQ0MsRUFBQUEsVUFEcUM7QUFFckNDLEVBQUFBLE1BQU0sR0FBRyxLQUY0QixFQUFoQztBQUdKO0FBQ0QsTUFBSUMsVUFBSjtBQUNBLE1BQUlDLFlBQVdDLFVBQVgsQ0FBc0JKLFVBQXRCLEtBQXFDRyxZQUFXRSxTQUFYLENBQXFCTCxVQUFyQixFQUFpQ00sV0FBakMsRUFBekMsRUFBeUZKLFVBQVUsR0FBRyxXQUFiLENBQXpGO0FBQ0ssTUFBSUMsWUFBV0MsVUFBWCxDQUF1QixHQUFFSixVQUFXLEtBQXBDLEtBQThDRyxZQUFXQyxVQUFYLENBQXNCSixVQUF0QixLQUFxQ0csWUFBV0UsU0FBWCxDQUFxQkwsVUFBckIsRUFBaUNPLE1BQWpDLEVBQXZGLEVBQW1JTCxVQUFVLEdBQUcsTUFBYixDQUFuSTtBQUNBLFFBQU0sSUFBSU0sS0FBSixDQUFXLFVBQVNSLFVBQVcsaUJBQS9CLENBQU47OztBQUdMLE1BQUlDLE1BQUosRUFBWSxPQUFPQSxNQUFNLEtBQUtDLFVBQWxCOztBQUVaLFNBQU9BLFVBQVA7QUFDRCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBmaWxlc3lzdGVtIGZyb20gJ2ZzJ1xuXG4vLyBjaGVjayBpZiBleGVjdXRlZCBkaXJlY3RseSBmcm9tIGNsaSBvciBzaG91bGQgYmUgaW52b2tlZCBhcyBtb2R1bGUuXG5leHBvcnQgZnVuY3Rpb24gaXNFeGVjdXRlZERpcmVjdGx5KCkge1xuICByZXR1cm4gKHJlcXVpcmUubWFpbiA9PT0gbW9kdWxlKSA/IHRydWUgOiBmYWxzZVxufVxuXG4vKipcbkpTTW9kdWxlVHlwZUNoZWNrIC0gQ2hlY2sgdGhlIHR5cGUgb2YgYSBKUyBtb2R1bGUgLSBlLmcuIGZpbGUgb3IgZGlyZWN0b3J5XG4gKiAgQ2hlY2sgaWYgamF2YXNjcmlwdCBtb2R1bGUgaXMgYSBtb2R1bGUgZmlsZSBvciBkaXJlY3RvcnkgbW9kdWxlLlxuICogQHJldHVybiBTdHJpbmcgfHwgQm9vbGVhblxuICovXG5leHBvcnQgZnVuY3Rpb24gaXNGaWxlT3JGb2xkZXJKU01vZHVsZSh7XG4gIG1vZHVsZVBhdGgsIC8vIHBhdGggdG8ganMgbW9kdWxlXG4gIGlzVHlwZSA9IGZhbHNlLCAvLyAnZmlsZScgfHwgJ2RpcmVjdG9yeScgLSBhbGxvd3MgdG8gcmV0dXJuIGJvb2xlYW4gaW4gY2FzZSBzZXQsIHJlc3BlY3RpdmUgdG8gdGhlIHR5cGUgc2V0LlxufSkge1xuICBsZXQgbW9kdWxlVHlwZVxuICBpZiAoZmlsZXN5c3RlbS5leGlzdHNTeW5jKG1vZHVsZVBhdGgpICYmIGZpbGVzeXN0ZW0ubHN0YXRTeW5jKG1vZHVsZVBhdGgpLmlzRGlyZWN0b3J5KCkpIG1vZHVsZVR5cGUgPSAnZGlyZWN0b3J5J1xuICBlbHNlIGlmIChmaWxlc3lzdGVtLmV4aXN0c1N5bmMoYCR7bW9kdWxlUGF0aH0uanNgKSB8fCAoZmlsZXN5c3RlbS5leGlzdHNTeW5jKG1vZHVsZVBhdGgpICYmIGZpbGVzeXN0ZW0ubHN0YXRTeW5jKG1vZHVsZVBhdGgpLmlzRmlsZSgpKSkgbW9kdWxlVHlwZSA9ICdmaWxlJ1xuICBlbHNlIHRocm93IG5ldyBFcnJvcihgTW9kdWxlICR7bW9kdWxlUGF0aH0gZG9lcyBub3QgZXhpc3RgKVxuXG4gIC8vIHJldHVybiBib29sZWFuIHJlc3BlY3RpdmUgdG8gdGhlIHR5cGUgaW4gcXVlc3Rpb24uXG4gIGlmIChpc1R5cGUpIHJldHVybiBpc1R5cGUgPT09IG1vZHVsZVR5cGVcblxuICByZXR1cm4gbW9kdWxlVHlwZVxufVxuIl19
